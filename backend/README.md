@@ -29,7 +29,7 @@ In order to run this project properly, make sure you have the following installe
       flask run
       ```
 
-## API Reference
+## API Reference (Windows Based)
  * As mentioned at the Project Documentation README, this project was intended to run locally, thus the backend is hosted at the default ```http://127.0.0.1:5000/```, also set as a proxy in the frontend configuration.
  * Authentication: This application does not require any type of authentication or API key.
 
@@ -221,18 +221,44 @@ Sample Response:
 }
 ```
 
+#### POST /quizzes
 
-8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
+- Fetches questions randomly or based on a previously specified category
+- Request Arguments: A JSON object with questions previously answered and a category object with the category id.
+- Returns: A JSON object with a random question
 
 
+Test it with curl:
+```
+curl -X POST  -d '{\"previous_questions\":[], \"quiz_category\":{\"id\":2}}'  -H "Content-Type: application/json"  http://127.0.0.1:5000/quizzes
+```
+
+Sample Response:
+```
+{
+  "message": "success",
+  "question": {
+    "answer": "Mona Lisa",
+    "category": 2,
+    "difficulty": 3,
+    "id": 17,
+    "question": "La Giaconda is better known as what?"
+  },
+  "status_code": 200,
+  "success": true
+}
+```
 
 
 
 ### Testing
-To run the tests, run
-```
-dropdb trivia_test
-createdb trivia_test
-psql trivia_test < trivia.psql
-python test_flaskr.py
-```
+To run the tests:
+   1. Create a trivia_test database
+   2. Load some initial data in order to run the tests:
+      ```
+      psql -U postgres -f trivia.psql -d trivia_test
+      ```
+   3. Run the tests:
+      ```
+      python test_flaskr.py
+      ```
