@@ -193,8 +193,35 @@ Sample Response:
 
 ### POST /questions/searches
 
+- Fetches questions based on a search term
+- Request Arguments: A JSON object with a searchTerm.
+- Returns: An array of questions, the total number of questions, and the current_category
 
-7. Create a POST endpoint to get questions based on a search term. It should return any questions for whom the search term is a substring of the question. 
+Test it with curl:
+```
+curl -X POST  -d '{\"searchTerm\":\"What\"}'  -H "Content-Type: application/json"  http://127.0.0.1:5000/questions/searches
+```
+
+Sample Response:
+```
+{
+  "current_category": null,
+  "questions": [
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 6,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    ...
+  ],
+  "success": true,
+  "total_questions": 6
+}
+```
+
+
 8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
 
 
