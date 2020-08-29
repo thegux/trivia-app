@@ -54,7 +54,7 @@ This API handles the following errors:
 
 #### GET /categories
 
-- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
+- Fetches an array of categories in with ids and types
 - Request Arguments: None
 - Returns: An array of objects (categories), which contains a object of id: category_string key:value pairs and type.
 
@@ -77,8 +77,45 @@ Sample Response:
  }
 ```
 
+#### GET /questions
 
-2. Create an endpoint to handle GET requests for questions, including pagination (every 10 questions). This endpoint should return a list of questions, number of total questions, current category, categories. 
+- Fetches an array of questions and an array with categories
+- Request Arguments: Page (Optional)
+- Returns: An array of categories, an array of questions, the total number of questions, and the current_category
+
+Test it with curl:
+```
+curl  http://127.0.0.1:5000/questions?page=2
+```
+
+Sample Response:
+```
+{
+    "categories": [
+        {
+            "id": 1,
+            "type": "Science"
+        },
+        ...
+    ],
+    "current_category": null,
+    "questions": [
+        {
+            "answer": "Jackson Pollock",
+            "category": 2,
+            "difficulty": 2,
+            "id": 19,
+            "question": "Which American artist was a pioneer of Abstract Expressionism, and a leading exponent of action painting?"
+        },
+        ...
+    ],
+    "status_code": 200,
+    "success": true,
+    "total_questions": 19
+}
+```
+
+
 4. Create an endpoint to DELETE question using a question ID. 
 5. Create an endpoint to POST a new question, which will require the question and answer text, category, and difficulty score. 
 6. Create a POST endpoint to get questions based on category. 
