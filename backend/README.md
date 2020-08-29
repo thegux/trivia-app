@@ -114,9 +114,27 @@ Sample Response:
     "total_questions": 19
 }
 ```
+#### DELETE /questions/<int:question_id>
 
+- Fetches an specific question and deletes it.
+- Request Arguments: An integer for question id.
+- Returns: An array of categories, an array of questions, the total number of questions, and the current_category
 
-4. Create an endpoint to DELETE question using a question ID. 
+Test it with curl:
+```
+curl -X DELETE http://127.0.0.1:5000/questions/18
+```
+
+Sample Response:
+```
+{
+  "deleted": 18,
+  "message": "The question was successfully deleted.",
+  "status_code": 200,
+  "success": true
+}
+```
+
 5. Create an endpoint to POST a new question, which will require the question and answer text, category, and difficulty score. 
 6. Create a POST endpoint to get questions based on category. 
 7. Create a POST endpoint to get questions based on a search term. It should return any questions for whom the search term is a substring of the question. 
