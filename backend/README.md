@@ -5,10 +5,10 @@
 ### Pre-requisites
 
 In order to run this project properly, make sure you have the following installed:
-  *Python 3
-  *Flask
-  *SQL Alchemy
-  *Flask-CORS
+  * Python 3
+  * Flask
+  * SQL Alchemy
+  * Flask-CORS
 
 ## Initial Setup (Windows Based)
   1. First create a table called trivia using a 'postgres' user. 
@@ -29,9 +29,27 @@ In order to run this project properly, make sure you have the following installe
       flask run
       ```
 
-## API INFO
+## API Reference
+ * As mentioned at the Project Documentation README, this project was intended to run locally, thus the backend is hosted at the default ```http://127.0.0.1:5000/```, also set as a proxy in the frontend configuration.
+ * Authentication: This application does not require any type of authentication or API key.
 
-One note before you delve into your tasks: for each endpoint you are expected to define the endpoint and response data. The frontend will be a plentiful resource because it is set up to expect certain endpoints and response data formats already. You should feel free to specify endpoints in your own way; if you do so, make sure to update the frontend or you will get some unexpected behavior. 
+### Error Handling
+The errors in this application are returned as JSON objects in the following format:
+```
+        {
+          "success": False,
+          "error": 404,
+          "message": "Not found"
+        }
+```
+
+This API handles the following errors:
+* 404 - Not Found
+* 422 - Unprocessable Entity
+
+
+
+
 
 1. Use Flask-CORS to enable cross-domain requests and set response headers. 
 2. Create an endpoint to handle GET requests for questions, including pagination (every 10 questions). This endpoint should return a list of questions, number of total questions, current category, categories. 
