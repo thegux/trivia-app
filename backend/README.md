@@ -11,7 +11,7 @@ In order to run this project properly, make sure you have the following installe
   * Flask-CORS
 
 ## Initial Setup (Windows Based)
-  1. First create a table called trivia using a 'postgres' user. 
+  1. First create a database called trivia.
   2. If would like to test the app with fake data:
       ```
       psql -U postgres -f trivia.psql -d trivia
@@ -63,7 +63,7 @@ Test it with curl:
 curl  http://127.0.0.1:5000/categories
 ```
 
-Sample Response: 
+Sample Response:
 
 ```
  {"data":[{"id":1,"type":"Science"},
