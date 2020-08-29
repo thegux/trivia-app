@@ -118,7 +118,7 @@ Sample Response:
 
 - Fetches an specific question and deletes it.
 - Request Arguments: An integer for question id.
-- Returns: An array of categories, an array of questions, the total number of questions, and the current_category
+- Returns: A JSON object indicating the question was successfully deleted
 
 Test it with curl:
 ```
@@ -150,20 +150,53 @@ Sample Response:
 {
   "message": "The question was successfully created",
   "question": {
-    "answer": "Henkins",
+    "answer": "Tom Henkins",
     "category": 2,
     "difficulty": 2,
     "id": 38,
-    "question": "Tom"
+    "question": "Who played Forest in Forest Gump?"
   },
   "status_code": 200,
   "success": true
 }
 ```
-6. Create a POST endpoint to get questions based on category. 
+
+#### GET /categories/<int:category_id>/questions
+
+- Fetches questions based on a category
+- Request Arguments: An integer for the category id.
+- Returns: An array of questions, the total number of questions, and the current_category
+
+Test it with curl:
+```
+curl http://127.0.0.1:5000/categories/1/questions
+```
+
+Sample Response:
+```
+{
+  "current_category": 1,
+  "questions": [
+    {
+      "answer": "The Liver",
+      "category": 1,
+      "difficulty": 4,
+      "id": 20,
+      "question": "What is the heaviest organ in the human body?"
+    },
+    ...
+  ],
+  "success": true,
+  "total_questions": 5
+}
+```
+
+### POST /questions/searches
+
+
 7. Create a POST endpoint to get questions based on a search term. It should return any questions for whom the search term is a substring of the question. 
 8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
-9. Create error handlers for all expected errors including 400, 404, 422 and 500. 
+
 
 
 
