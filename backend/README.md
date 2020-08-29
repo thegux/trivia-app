@@ -135,7 +135,31 @@ Sample Response:
 }
 ```
 
-5. Create an endpoint to POST a new question, which will require the question and answer text, category, and difficulty score. 
+#### POST /questions
+
+- Creates an specific question.
+- Request Arguments: A JSON object with a question, an answer, a difficulty, and a category.
+- Returns: The created question successfully formatted.
+
+Test it with curl:
+```
+curl -X POST  -d '{\"question\":\"Who played Forest in Forest Gump?\",\"answer\":\"Tom Henkins\",\"category\":\"2\",\"difficulty\":\"2\"}'  -H "Content-Type: application/json"  http://127.0.0.1:5000/questions
+```
+Sample Response:
+```
+{
+  "message": "The question was successfully created",
+  "question": {
+    "answer": "Henkins",
+    "category": 2,
+    "difficulty": 2,
+    "id": 38,
+    "question": "Tom"
+  },
+  "status_code": 200,
+  "success": true
+}
+```
 6. Create a POST endpoint to get questions based on category. 
 7. Create a POST endpoint to get questions based on a search term. It should return any questions for whom the search term is a substring of the question. 
 8. Create a POST endpoint to get questions to play the quiz. This endpoint should take category and previous question parameters and return a random questions within the given category, if provided, and that is not one of the previous questions. 
